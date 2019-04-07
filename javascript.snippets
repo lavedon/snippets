@@ -1,0 +1,130 @@
+# ####################
+# Chrome Extensions
+# ###################
+
+# Background.js
+
+# https://www.youtube.com/watch?v=YEEFrnBhY4I
+# On HistoryStateUpdate execute script
+snippet chs "HistoryStateUpdated do something" 
+chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
+	console.log('Page uses History API and we heard a pushState/replaceState');
+	chrome.tabs.executeScript(null, {file: "$1"});		
+});
+endsnippet
+
+# 
+# Content.js OR Background.js OR Popup.js
+# 
+
+# Local Storage
+# https://developer.chrome.com/extensions/storage
+
+# SYNC version
+snippet clss "Local Storage Set SYNC VERSION"
+chrome.storage.sync.set({${1:key}: ${2:value}}, function() {
+          console.log('Value is set to ' + $2);
+        });
+endsnippet
+
+snippet clsg "Local Storage Get SYNC VERSION"
+chrome.storage.sync.get(['${1:key}'], function(result) {
+          console.log('Value currently is ' + result.$2);
+        });
+endsnippet
+
+# Set a variable to local storage variable
+# SYNC Version
+
+
+# Local Version
+snippet clssl "Local Storage Set LOCAL VERSION"
+chrome.storage.local.set({${1:key}: ${2:value}}, function() {
+          console.log('Value is set to ' + $2);
+        });
+endsnippet 
+
+snippet clssg "Local Storage Get LOCAL VERSION"
+chrome.storage.local.get(['${1:key}'], function(result) {
+          console.log('Value currently is ' + result.$1);
+        });
+endsnippet
+
+
+# Popup Script Snippets
+# #####################
+
+# How to detect a button press
+# YOU CANOT NOT use normal inline Javascript code
+# "onclick() or onchange() is not allowed
+
+# For one button
+snippet bu "Popup Detect Button Press" 
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('${1:button}').addEventListener('click', ${2:myFunctionNoParens});
+});
+endsnippet
+
+# Detect Button by ID
+snippet buid "Popup Detect Button - By Id" 
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('${1:button}').addEventListener('click', ${2:myFunctionNoParens});
+});
+endsnippet
+
+# Simple Test of Button Click With Alert
+
+snippet bualert "Popup Button Click Cause Alert"
+function myAlert(){
+    alert('Hello World!');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('$1').addEventListener('click', myAlert);
+});
+endsnippet
+
+snippet pie "Basic Pie Chart"
+
+var ctx = document.getElementById('totalFinancing').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ["Down Payment", "Seller Financing"],
+        datasets: [{
+            backgroundColor: ['#3E95CD', '#C45850'],
+            data: [350, 1050],
+            borderWidth: 1
+        }]
+    },
+
+    options: {
+        title: {
+            responsive: true,
+            maintainAspectRatio: false,
+            text: 'Downpayment vs. Seller Financing.' 
+        }
+    }
+});
+endsnippet
+
+##############################
+## CALCULATORS AND FINANCE ##
+#############################
+snippet calc "Basic Input Box Calculator"
+/*
+// Attached HTML
+<input id="a1" type="text" />
+<input id="a2" type="text" onblur="calculate()"  />
+<input id="a3" type="text" name="total_amt" />
+*/
+
+calculate = function()
+{
+    var resources = document.getElementById('a1').value;
+    var minutes = document.getElementById('a2').value; 
+    document.getElementById('a3').value = parseInt(resources)*parseInt(minutes);
+     
+   }
+
+endsnippet

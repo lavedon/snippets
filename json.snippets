@@ -1,0 +1,25 @@
+# Add a Popup HTML page to your Chrome Extension
+snippet p "Set a PopUp HTML page"
+"browser_action": {
+	"default_popup": "popup.html"
+}
+endsnippet
+
+# Allow the use of local variables
+# With your chrome extension.
+# i.e. popup, content script etc. all chane the same variable.
+# "Storage permissions"
+snippet st "Enable local storage"
+"permissions": [
+	"storage"
+],
+endsnippet
+
+# Allow Extension to inject on all websites
+snippet aurl "Enable injection on all websites"
+"permissions": [
+	"tabs",
+	"http://*/",
+	"https://*/"
+],
+endsnippet 
