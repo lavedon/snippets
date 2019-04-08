@@ -671,3 +671,20 @@ snippet sty "Link to Style Sheet"
 	<link rel="stylesheet" href="${1:styles}.css">
 endsnippet
 
+snippet basic_calc "My Calculator"
+# With Javascript
+
+<input id="a1" type="text" />
+<input id="a2" type="text" onblur="calculate()"  />
+<input id="a3" type="text" name="total_amt" />
+
+<!-- JavaScript 
+calculate = function()
+{
+    var resources = document.getElementById('a1').value;
+    var minutes = document.getElementById('a2').value; 
+    document.getElementById('a3').value = parseInt(resources)*parseInt(minutes);
+     
+}
+-->
+endsnippet

@@ -128,3 +128,25 @@ calculate = function()
    }
 
 endsnippet
+
+snippet commas "format number with commas"
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+endsnippet
+
+# Accounting Negative Numbers - Negative numbers in ( ) 
+# Also adds commas
+snippet acc_commas "Format number with commas as ()"
+function formatNumber(x) {
+    if (Math.sign(x) === -1) {
+        console.log("X was negative!");
+        x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        x = "(" + x + ")";
+        return x;
+    } else {
+        console.log("X was positive!");
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+}
+endsnippet
