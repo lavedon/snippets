@@ -150,3 +150,14 @@ function formatNumber(x) {
     }
 }
 endsnippet
+
+# Change All HTML elements by Class Name
+# You Have to use a loop
+# No one knows why
+snippet chang_by_class "Changle All HTML elements by Class Name"
+let ${1} = document.getElementsByClassName("${2}");
+let i;
+for (i = 0; i < x.length; i++) {
+    $1[i].innerHTML= "This text has changed";
+}
+endsnippet
