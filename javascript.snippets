@@ -161,3 +161,22 @@ for (i = 0; i < x.length; i++) {
     $1[i].innerHTML= "This text has changed";
 }
 endsnippet
+
+
+
+# ########
+# Simple Console Scrapers
+##########
+
+
+# Profermative.com Category Stat scraper
+# Good snippet for all super simple scrapers
+snippet scrape_cat "Simple Proformative.com category stats scraper"
+var myString = "";
+var cats = document.querySelectorAll("a.prod-cat-link");
+
+
+for (let i = 0; i < cats.length; i++) { 
+myString = myString + cats[i].querySelector("div.prod-cat").innerText + ": " + cats[i].querySelector("div.prod-count").innerText + " \n";
+}
+endsnippet
