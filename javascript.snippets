@@ -193,3 +193,34 @@ snippet regex_bet_html "Grab the text between HTML tags"
 // Positive Lookahead (?=<\/i>)
 var ${1:insideTag} = /(?<=<${2:i}>).+?(?=<\/$2>)/.exec(${3:myString});
 endsnippet
+
+# #######################
+# GOOGLE SHEETS SCRIPTS
+#####################
+snippet google_sheet_pop "Populate a Google Sheet with info from a scraper, extension etc."
+var ss = SpreadsheetApp.openById("190_LRZqIYL_7ECBBGfnbIcYtDD8WFMjws38n4iHvz1Q");
+var sheet1 = ss.getSheetByName("Sheet1");
+
+
+function doGet(e) {
+  var companyName = e.parameter.co;
+  var ownerName = e.parameter.ceo;
+  var address = e.parameter.addr;
+  var cityState = e.parameter.cs;
+  var zip = e.parameter.zip;
+  var phone = e.parameter.phone;
+  
+  var lastrow = sheet1.getLastRow();
+  
+  sheet1.getRange((lastrow+1), 1).setValue(companyName);
+  sheet1.getRange((lastrow+1), 2).setValue(ownerName);
+  sheet1.getRange((lastrow+1), 3).setValue(address);
+  sheet1.getRange((lastrow+1), 4).setValue(cityState);
+  sheet1.getRange((lastrow+1), 5).setValue(zip);
+  sheet1.getRange((lastrow+1), 6).setValue(phone);
+  
+  return ContentService.createTextOutput(companyName + " " + ownerName + " Address: " + address + "In " + cityState + " " + zip + " " + phone);
+  
+}
+endsnippet  
+  
