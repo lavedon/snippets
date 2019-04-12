@@ -180,3 +180,15 @@ for (let i = 0; i < cats.length; i++) {
 myString = myString + cats[i].querySelector("div.prod-cat").innerText + ": " + cats[i].querySelector("div.prod-count").innerText + " \n";
 }
 endsnippet
+
+
+
+# #############
+# RegEx #######
+###############
+
+# grab text between HTML tags
+snippet regex_bet_html "Grab the text between HTML tags"
+// Positive Lookbehind (?<=<i>)
+var ${1:insideTag} = /(?<=<${2:i}>).+?(?=<\/$2>)\.exec(${3:myString});
+endsnippet
