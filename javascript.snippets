@@ -191,5 +191,5 @@ endsnippet
 snippet regex_bet_html "Grab the text between HTML tags"
 // Positive Lookbehind (?<=<i>)
 // Positive Lookahead (?=<\/i>)
-var ${1:insideTag} = /(?<=<${2:i}>).+?(?=<\/$2>)\.exec(${3:myString});
+var ${1:insideTag} = /(?<=<${2:i}>).+?(?=<\/$2>)/.exec(${3:myString});
 endsnippet
